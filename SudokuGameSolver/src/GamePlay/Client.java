@@ -7,7 +7,7 @@ public class Client {
         game.solvedSudoku(sudoku);
         game.generateSudoku(sudoku);
         game.printSudoku(sudoku);
-
+        
     
     }
 }

@@ -7,8 +7,11 @@ import javax.swing.JFrame;
 import javax.swing.WindowConstants;
 
 public class DesignUI {
-    JFrame jfame;
 
+    
+    public static void main(String[] args) {
+
+    }
     
     
 }
