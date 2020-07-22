@@ -1,3 +1,5 @@
+package GamePlay;
+
 import java.util.HashMap;
 
 public class Game {
@@ -109,15 +111,15 @@ public class Game {
     }
 
     public int[][] randSudoku(){
-        int[][] sudoku = new int[this.size][this.size];
+        int[][] sudoku = new int[9][9];
         for (int i = 0; i < sudoku.length; i++) {
             for (int j = 0; j < sudoku.length; j++) {
                 sudoku[i][j] = 0;
             }
         }
 
-        int randomNumber = (int) (Math.random() * (this.size - 1) + 1);
-        for (int i = 0; i < sudoku. length; i++) {
+        for (int i = 0; i < sudoku.length; i++) {
+            int randomNumber = (int) ((Math.random() * (9 - 1)) + 1);
             if (isAvailable(sudoku,0,i,randomNumber)) {
                 sudoku[0][i] = randomNumber;
             }
@@ -125,6 +127,7 @@ public class Game {
 
         for (int i = 1; i < (int) Math.sqrt(sudoku.length); i++) {
             for (int j = 0; j < (int) Math.sqrt(sudoku.length); j++) {
+                int randomNumber = (int) ((Math.random() * (9 - 1)) + 1);
                 if (isAvailable(sudoku,i,j,randomNumber)) {
                     sudoku[i][j] = randomNumber;
                 }

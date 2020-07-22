@@ -4,6 +4,20 @@
             "type": "java",
             "name": "CodeLens (Launch) - Client",
             "request": "launch",
+            "mainClass": "GamePlay.Client",
+            "projectName": "JavaSudokuGame_cdbf618b"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - GridLayoutExam1",
+            "request": "launch",
+            "mainClass": "GridLayoutExam1",
+            "projectName": "JavaSudokuGame_cdbf618b"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Client",
+            "request": "launch",
             "mainClass": "Client",
             "projectName": "JavaSudokuGame_cdbf618b"
         }
