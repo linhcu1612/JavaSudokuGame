@@ -16,11 +16,11 @@ public class Game {
             }
             for (int j = 0; j < sudoku.length; j++) {
                 if (j == 0) {
-                    System.out.print(" | " + start[i][j] + " ");
+                    System.out.print(" | " + sudoku[i][j] + " ");
                 } else if (((j+1) % Math.sqrt(sudoku.length)) == 0 ) {
-                    System.out.print(start[i][j] + " | ");
+                    System.out.print(sudoku[i][j] + " | ");
                 } else {
-                    System.out.print(start[i][j] + " ");
+                    System.out.print(sudoku[i][j] + " ");
                 }
             }
             System.out.println("");

@@ -9,7 +9,13 @@ public class Client{
 
         start = game.generateSudoku(sudoku);
 
-        //game.printSudoku(start);
+        game.printSudoku(start);
+        
+        System.out.println("here is the answer");
+
+        game.solvedSudoku(start);
+
+        game.printSudoku(start);
 
 
 
