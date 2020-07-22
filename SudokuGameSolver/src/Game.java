@@ -9,6 +9,27 @@ public class Game {
         this.difMode = "hard";
     }
 
+    public void printSudoku(int[][] sudoku) {
+        for (int i = 0; i < sudoku.length; i++) {
+            if ( i == 0) {
+                System.out.println(" - - - - - - - - - - - - - ");
+            }
+            for (int j = 0; j < sudoku.length; j++) {
+                if (j == 0) {
+                    System.out.print(" | " + start[i][j] + " ");
+                } else if (((j+1) % Math.sqrt(sudoku.length)) == 0 ) {
+                    System.out.print(start[i][j] + " | ");
+                } else {
+                    System.out.print(start[i][j] + " ");
+                }
+            }
+            System.out.println("");
+            if ( (i + 1) % Math.sqrt(sudoku.length) == 0) {
+                System.out.println(" - - - - - - - - - - - - - ");
+            }
+        }
+    }
+
     public void ChooseDiff(String x) {
         HashMap<String, Integer> linh = new HashMap<String, Integer>();
         linh.put("hard", 9);

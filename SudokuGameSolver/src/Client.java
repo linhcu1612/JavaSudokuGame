@@ -1,4 +1,4 @@
-public class Client {
+public class Client extends  Game{
     public static void main(String[] args) {
         Game game = new Game();
 
@@ -9,24 +9,9 @@ public class Client {
 
         start = game.generateSudoku(sudoku);
 
-        for (int i = 0; i < 9; i++) {
-            if ( i == 0) {
-                System.out.println(" - - - - - - - - - - - - - ");
-            }
-            for (int j = 0; j < 9; j++) {
-                if (j == 0) {
-                    System.out.print(" | " + start[i][j] + " ");
-                } else if (((j+1) % 3) == 0 ) {
-                    System.out.print(start[i][j] + " | ");
-                } else {
-                    System.out.print(start[i][j] + " ");
-                }
-            }
-            System.out.println("");
-            if ( (i + 1) % 3 == 0) {
-                System.out.println(" - - - - - - - - - - - - - ");
-            }
-        }
+        //game.printSudoku(start);
+
+
 
 
 
