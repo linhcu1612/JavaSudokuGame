@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - PointsEx",
+            "request": "launch",
+            "mainClass": "DesignUI.PointsEx",
+            "projectName": "JavaSudokuGame_cdbf618b"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - Client",
             "request": "launch",
             "mainClass": "GamePlay.Client",
