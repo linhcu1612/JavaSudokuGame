@@ -16,8 +16,8 @@ public class PointsEx extends JFrame {
         add(drawPanel);
 
 
-        setSize(450, 450);
-        setTitle("Points");
+        setSize(500, 500);
+        setTitle("Sudoku");
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
