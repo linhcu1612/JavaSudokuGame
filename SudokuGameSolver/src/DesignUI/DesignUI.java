@@ -16,6 +16,7 @@ public class DesignUI {
         JButton gameMode2 = new JButton();
         gameMode2.setText("SolvingMode");
         gameMode2.setBounds(300, 225, 100, 50);
+
         f.add(gameMode1);
         f.add(gameMode2);
         f.setSize(500, 500);
