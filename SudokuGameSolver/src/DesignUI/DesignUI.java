@@ -13,7 +13,7 @@ public class DesignUI {
         JButton gameMode1 = new JButton();
         gameMode1.setText("CreatingMode");
         gameMode1.setBounds(100, 225, 100, 50);
-        gameMode1.addActionListener(new ButtonListener());
+        gameMode1.addMouseListener(l);
         JButton gameMode2 = new JButton();
         gameMode2.setText("SolvingMode");
         gameMode2.setBounds(300, 225, 100, 50);
