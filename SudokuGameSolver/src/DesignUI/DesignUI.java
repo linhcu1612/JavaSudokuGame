@@ -12,10 +12,15 @@ public class DesignUI extends JFrame {
     JButton gameMode2;
 
     public DesignUI() {
-        f = new JFrame();
 
         var drawPanel = new DrawPanel();
         add(drawPanel);
+
+        setSize(500, 500);
+        setTitle("Sudoku");
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setVisible(true);
         
 
         //
@@ -31,10 +36,10 @@ public class DesignUI extends JFrame {
         //f.add(gameMode1);
         //f.add(gameMode2);
         //
-        f.setSize(500, 500);
-        f.setLayout(null);
-        f.setVisible(true);
-        f.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        //f.setSize(500, 500);
+        //f.setLayout(null);
+        //f.setVisible(true);
+        //f.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }
 
     public class mouseClickedButton1 implements MouseListener {
