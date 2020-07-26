@@ -17,7 +17,7 @@ public class PointsEx extends JFrame {
 
 
         setSize(450, 450);
-        setTitle("Points");
+        setTitle("Sudoku");
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
