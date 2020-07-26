@@ -20,13 +20,12 @@ public class DesignUI extends JFrame {
         JButton gameMode1 = new JButton();
         gameMode1.setText("CreatingMode");
         gameMode1.setBounds(100, 225, 100, 50);
-        gameMode1.addMouseListener(new CustomMouseListener());
+        gameMode1.addMouseListener(new mouseClickedButton1());
         JButton gameMode2 = new JButton();
         gameMode2.setText("SolvingMode");
         gameMode2.setBounds(300, 225, 100, 50);
-        //gameMode2.addMouseListener(new CustomMouseListener());
+        gameMode2.addMouseListener(new mouseClickedButton2());
         
-        f.repaint();
         f.add(gameMode1);
         f.add(gameMode2);
         f.setSize(500, 500);
@@ -82,7 +81,7 @@ public class DesignUI extends JFrame {
         }
     }
 
-    public class CustomMouseListener implements MouseListener {
+    public class mouseClickedButton1 implements MouseListener {
 		@Override
         public void mousePressed(MouseEvent e) {
         }
@@ -93,6 +92,48 @@ public class DesignUI extends JFrame {
                 //var drawPanel = new DrawPanel();
                 //add(drawPanel);
                 //f.repaint();
+
+
+                //setSize(500, 500);
+                //setTitle("Sudoku");
+                //setLocationRelativeTo(null);
+                //setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		}
+
+		@Override
+		public void mouseReleased(MouseEvent e) {
+		}
+
+		@Override
+		public void mouseEntered(MouseEvent e) {
+		}
+
+		@Override
+		public void mouseExited(MouseEvent e) {
+		}
+    }
+
+    public class mouseClickedButton2 implements MouseListener {
+		@Override
+        public void mousePressed(MouseEvent e) {
+        }
+
+		@Override
+		public void mouseClicked(MouseEvent e) {
+            System.out.println("this is solvingMode");
+            f.removeAll();
+
+            JButton gameMode3 = new JButton();
+            gameMode3.setText("Testing");
+            gameMode3.setBounds(300, 225, 100, 50);
+
+            f.add(gameMode3);
+        
+
+
+            //var drawPanel = new DrawPanel();
+            //add(drawPanel);
+            System.out.println("repaint ?");
 
 
                 //setSize(500, 500);
