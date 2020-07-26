@@ -15,6 +15,7 @@ public class DesignUI extends JFrame {
         f = new JFrame();
 
         var drawPanel = new DrawPanel();
+        add(drawPanel);
         
 
         //
