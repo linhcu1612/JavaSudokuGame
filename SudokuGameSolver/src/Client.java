@@ -1,11 +1,11 @@
 public class Client {
     public static void main(String[] args) {
         
-        Game game = new Game();
-        game.ChooseDiff("hard");
-        game.randSudoku();
-        game.printSudoku();
-        game.solvedSudoku();
-        game.printSudoku(); 
+        Sudoku sudoku = new Sudoku();
+        Game game = new Game("hard",sudoku);
+        sudoku = game.randSudoku(sudoku);
+        game.printSudoku(sudoku);
+        game.solvedSudoku(sudoku);
+        game.printSudoku(sudoku); 
     }
 }

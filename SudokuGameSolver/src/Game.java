@@ -1,90 +1,61 @@
-import java.util.HashMap;
 import java.util.Random;
 
 public class Game {
-    private int size;
-    private String difMode;
-    private String title;
-    private int[][] sudoku;
 
-    public Game() {
-        this.size = 9;
-        this.difMode = "hard";
-        this.sudoku = new int[size][size];
-        this.sudoku = generateSudoku();
+    public Game(String difMode,Sudoku sudoku) {
+        sudoku.ChooseDiff(difMode);
     }
 
-    public int[][] getSudoku() {
-        return this.sudoku;
-    }
-
-    public void setSudoku(int[][] sudoku) {
-        this.sudoku = sudoku;
-    }
-
-    public void printSudoku() {
-        System.out.println("Title: " + this.title);
-        System.out.println("Difficult Mode : " + this.difMode);
-        for (int i = 0; i < sudoku.length; i++) {
-            if ( i == 0 || (i % Math.sqrt(sudoku.length) == 0)) {
+    public void printSudoku(Sudoku sudoku) {
+        System.out.println("Title: " + sudoku.getTitle());
+        System.out.println("Difficult Mode : " + sudoku.getDiffMode());
+        System.out.println("Status: " + sudoku.getStatus());
+        for (int i = 0; i < sudoku.getSudoku().length; i++) {
+            if ( i == 0 || (i % Math.sqrt(sudoku.getSudoku().length) == 0)) {
                 System.out.print(" ");
-                for (int j = 0; j < sudoku.length+(Math.sqrt(sudoku.length) + 1); j++) {
+                for (int j = 0; j < sudoku.getSudoku().length+(Math.sqrt(sudoku.getSudoku().length) + 1); j++) {
                     System.out.print("- ");
                 }
                 System.out.println(" ");
             }
-            for (int j = 0; j < sudoku.length; j++) {
+            for (int j = 0; j < sudoku.getSudoku().length; j++) {
                 if (j == 0) {
-                    System.out.print(" | " + sudoku[i][j] + " ");
-                } else if (((j+1) % Math.sqrt(sudoku.length)) == 0 ) {
-                    System.out.print(sudoku[i][j] + " | ");
+                    System.out.print(" | " + sudoku.getSudoku()[i][j] + " ");
+                } else if (((j+1) % Math.sqrt(sudoku.getSudoku().length)) == 0 ) {
+                    System.out.print(sudoku.getSudoku()[i][j] + " | ");
                 } else {
-                    System.out.print(sudoku[i][j] + " ");
+                    System.out.print(sudoku.getSudoku()[i][j] + " ");
                 }
             }
             System.out.println("");
         }
         System.out.print(" ");
-        for (int j = 0; j < sudoku.length+(Math.sqrt(sudoku.length) + 1); j++) {
+        for (int j = 0; j < sudoku.getSudoku().length+(Math.sqrt(sudoku.getSudoku().length) + 1); j++) {
             System.out.print("- ");
         }
         System.out.println(" ");
     }
 
-    public void ChooseDiff(String x) {
-        HashMap<String, Integer> linh = new HashMap<String, Integer>();
-        linh.put("hard", 9);
-        linh.put("medium", 6);
-        linh.put("easy",4);
-
-        if (linh.containsKey(x)) {
-            this.size = linh.get(x);
-            this.difMode =  x;
-        } else {
-            System.out.println("There are only 3 modes of this game : hard, medium and easy");
-        }
-    }
-
-    public boolean isAvailable(int row, int col, int num) {
-        for (int i = 0; i < this.sudoku.length; i++) {
-            if (this.sudoku[row][i] == num) {
+    public boolean isAvailable(Sudoku sudoku, int row, int col, int num) {
+        for (int i = 0; i < sudoku.getSudoku().length; i++) {
+            if (sudoku.getSudoku()[row][i] == num) {
                 return false;
             }
         }
 
-        for (int k = 0; k < this.sudoku.length; k++) {
-            if (this.sudoku[k][col] == num) {
+        for (int k = 0; k < sudoku.getSudoku().length; k++) {
+            if (sudoku.getSudoku()[k][col] == num) {
                 return false;
             }
         }
 
-        int box = (int) Math.sqrt(this.sudoku.length);
+        int box = (int) Math.sqrt(sudoku.getSudoku().length);
         int startRowBox = row - row % box;
         int startColBox = col - col % box;
 
         for (int j = startColBox;j < startColBox + box; j++) {
             for (int l = startRowBox; l < startRowBox + box; l++) {
-                if (this.sudoku[l][j] == num) {
+                if (sudoku.getSudoku()[l][j] == num) {
                     return false;
                 }
             }
@@ -93,15 +64,15 @@ public class Game {
         return true;
     }
 
-    public boolean solvedSudoku() {
-        this.title = "Solved Sudoku Set";
+    public boolean solvedSudoku(Sudoku sudoku) {
+        sudoku.setTitle("Solved Sudoku Set");
         int row = -1;
         int col = -1;
         boolean isEmpty = true;
 
-        for (int i = 0; i < sudoku.length; i++) {
-            for (int j = 0; j < sudoku.length; j++) {
-                if (this.sudoku[i][j] == 0) {
+        for (int i = 0; i < sudoku.getSudoku().length; i++) {
+            for (int j = 0; j < sudoku.getSudoku().length; j++) {
+                if (sudoku.getSudoku()[i][j] == 0) {
                     row = i;
                     col = j;
                     isEmpty = false;
@@ -117,43 +88,38 @@ public class Game {
             return true;
         }
 
-        for (int num = 1; num <= this.sudoku.length; num++) {
-            if (isAvailable(row,col,num)){
-                this.sudoku[row][col] = num;
-                if (solvedSudoku()) {
+        for (int num = 1; num <= sudoku.getSudoku().length; num++) {
+            if (isAvailable(sudoku,row,col,num)){
+                sudoku.getSudoku()[row][col] = num;
+                if (solvedSudoku(sudoku)) {
+                    sudoku.setStatus("solved");
                     return true;
                 } else {
-                    this.sudoku[row][col] = 0;
+                    sudoku.getSudoku()[row][col] = 0;
                 }
             }
         }
-
+        
+        sudoku.setStatus("unsolved");
         return false;
     }
 
-    public int[][] randSudoku(){
-        this.title = "Generated Random Sudoku Set";
+    public Sudoku randSudoku(Sudoku sudoku){
+        sudoku.setTitle("Generated Random Sudoku Set");
+        sudoku.setStatus("new Sudoku Set");
 
         Random rand = new Random();
 
-        for (int i = 0; i < sudoku.length; i++) {
-            for (int j = 0; j < sudoku.length; j++) {
-                int randomNumber = (int) ((Math.random() * (size - 1)) + 1);
+        for (int i = 0; i < sudoku.getSudoku().length; i++) {
+            for (int j = 0; j < sudoku.getSudoku().length; j++) {
+                int randomNumber = (int) ((Math.random() * (sudoku.getSize() - 1)) + 1);
                 float random = rand.nextFloat();
-                if (isAvailable(i,j,randomNumber) & random > 0.5) {
-                    sudoku[i][j] = randomNumber;
+                if (isAvailable(sudoku,i,j,randomNumber) & random > 0.5) {
+                    sudoku.getSudoku()[i][j] = randomNumber;
                 }
             }
         }
-        return this.sudoku;
-    }
 
-    public int[][] generateSudoku() {
-        for (int i = 0; i < sudoku.length; i++) {
-            for (int j = 0; j < sudoku.length; j++) {
-                    sudoku[i][j] = 0;
-            }
-        }
         return sudoku;
     }
 }
