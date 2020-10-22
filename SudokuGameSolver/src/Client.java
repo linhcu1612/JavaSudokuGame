@@ -6,6 +6,8 @@ public class Client {
         sudoku = game.randSudoku(sudoku);
         game.printSudoku(sudoku);
         game.solvedSudoku(sudoku);
-        game.printSudoku(sudoku); 
+        game.printSudoku(sudoku);
+        
+        
     }
 }
