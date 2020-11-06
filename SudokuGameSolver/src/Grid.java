@@ -3,13 +3,22 @@ import java.awt.Point;
 import java.util.function.Consumer;
 
 public class Grid implements Iterable<Cell> {
-    
+
+    Sudoku sudoku;
+    Game game;
+    int[][] unsolveSudoku;
     Cell[][] cells = new Cell[9][9];
 
     public Grid() {
+        Sudoku sudoku = new Sudoku();
+        Game game = new Game("hard", sudoku);
+        sudoku = game.randSudoku(sudoku);
+        unsolveSudoku = sudoku.getSudoku();
+        game.printSudoku(sudoku);
+        int[][] unsolveSudoku = sudoku.getSudoku();
         for(int i = 0; i < cells.length; i++){
             for(int j = 0; j < cells[i].length; j++){
-                cells[i][j] = new Cell( i, j, 80*i, 80*j);
+                cells[i][j] = new Cell( i, j, 80*i, 80*j, unsolveSudoku[i][j]);
             }
         }
     }

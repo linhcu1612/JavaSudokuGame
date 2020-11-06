@@ -1,10 +1,11 @@
 import java.util.HashMap;
 
 public class Sudoku {
-    private int size;
-    private String diffMode = "null";
-    private String title = "null";
-    private String status = "null";
+    //default mode
+    private int size = 9;
+    private String diffMode = "hard";
+    private String title = "Default Mode";
+    private String status = "Unsolve";
     private int[][] sudoku;
 
     public Sudoku() {
