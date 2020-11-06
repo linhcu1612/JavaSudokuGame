@@ -27,10 +27,6 @@ class Main extends JFrame {
 
         @Override
         public void mouseClicked(MouseEvent e) {
-            if (1==1) {
-                NewGame game = new NewGame();
-                System.out.println("DDM");
-            }
         }
 
         @Override
