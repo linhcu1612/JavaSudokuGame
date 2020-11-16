@@ -16,9 +16,11 @@ public class Grid implements Iterable<Cell> {
         unsolveSudoku = sudoku.getSudoku();
         game.printSudoku(sudoku);
         int[][] unsolveSudoku = sudoku.getSudoku();
+        game.solvedSudoku(sudoku);
+        game.printSudoku(sudoku);
         for(int i = 0; i < cells.length; i++){
             for(int j = 0; j < cells[i].length; j++){
-                cells[i][j] = new Cell( i, j, 80*i, 80*j, unsolveSudoku[i][j]);
+                cells[i][j] = new Cell( i, j, 80*i, 80*j, unsolveSudoku[j][i]);
             }
         }
     }

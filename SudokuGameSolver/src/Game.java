@@ -53,9 +53,9 @@ public class Game {
         int startRowBox = row - row % box;
         int startColBox = col - col % box;
 
-        for (int j = startColBox;j < startColBox + box; j++) {
-            for (int l = startRowBox; l < startRowBox + box; l++) {
-                if (sudoku.getSudoku()[l][j] == num) {
+        for (int i = startColBox;i < startColBox + box; i++) {
+            for (int j = startRowBox; j < startRowBox + box; j++) {
+                if (sudoku.getSudoku()[i][j] == num) {
                     return false;
                 }
             }

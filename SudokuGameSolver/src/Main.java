@@ -5,56 +5,7 @@ import java.time.Duration;
 import java.time.Instant;
 
 class Main extends JFrame {
-
-    class UI extends JPanel implements MouseListener {
-
-        private JButton StartNewGame, ContinueLastGame;
     
-        private final int ButtonSizeX = 100;
-        private final int ButtonSizeY = 50;
-        private final int StartNewGameLocationX = 100;
-        private final int StartNewGameLocationY = 250;
-        private final int ContinueLastGameLocationX = 300;
-        private final int ContinueLastGameLocationY = 250;
-    
-    
-        public UI() {
-    
-            this.setPreferredSize(new Dimension(500,500));
-            StartNewGame = new JButton("New Game");
-            ContinueLastGame = new JButton("Continue");
-            StartNewGame.setSize(ButtonSizeX, ButtonSizeY);
-            ContinueLastGame.setSize(ButtonSizeX,ButtonSizeY);
-            StartNewGame.setLocation(StartNewGameLocationX, StartNewGameLocationY);
-            ContinueLastGame.setLocation(ContinueLastGameLocationX, ContinueLastGameLocationY);
-            StartNewGame.addMouseListener(this);
-            this.add("new game", StartNewGame);
-            this.add("continue", ContinueLastGame);
-        }
-    
-        @Override
-        public void mouseClicked(MouseEvent e) {
-            NewGame newGame = new NewGame();
-            switchPanels(newGame);
-        }
-    
-        @Override
-        public void mousePressed(MouseEvent e) {
-        }
-    
-        @Override
-        public void mouseReleased(MouseEvent e) {
-        }
-    
-        @Override
-        public void mouseEntered(MouseEvent e) {
-        }
-    
-        @Override
-        public void mouseExited(MouseEvent e) {
-        }
-    }
-
     class NewGame extends JPanel implements MouseListener {
 
         Stage stage;
@@ -104,11 +55,6 @@ class Main extends JFrame {
         setContentPane(newGame);
         pack();
         setVisible(true);
-    }
-
-    public void switchPanels(JPanel panel) {
-        //pane = panel;
-        //repaint();
     }
 
     public void run() {
