@@ -4,6 +4,7 @@ public class Sudoku {
     //default mode
     private int size = 9;
     private String diffMode = "hard";
+    private float mode;
     private String title = "Default Mode";
     private String status = "Unsolve";
     private int[][] sudoku;
@@ -14,6 +15,7 @@ public class Sudoku {
 
     public void setSize(int size) {
         this.size = size;
+        this.sudoku = new int[size][size];
     }
 
     public int getSize() {
@@ -52,16 +54,19 @@ public class Sudoku {
         this.sudoku = sudoku;
     }
 
+    public float getMode() {
+        return this.mode;
+    }
+
     public void ChooseDiff(String x) {
-        HashMap<String, Integer> linh = new HashMap<String, Integer>();
-        linh.put("hard", 9);
-        linh.put("medium", 6);
-        linh.put("easy",4);
+        HashMap<String, Float> linh = new HashMap<String, Float>();
+        linh.put("hard", 0.21f);
+        linh.put("medium", 0.5f);
+        linh.put("easy",0.71f);
 
         if (linh.containsKey(x)) {
-            this.size = linh.get(x);
+            this.mode = linh.get(x);
             this.diffMode = x;
-            this.sudoku = new int[size][size];
         } else {
             System.out.println("There are only 3 modes of this game : hard, medium and easy");
         }

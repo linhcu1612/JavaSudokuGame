@@ -14,6 +14,10 @@ public class Cell extends Rectangle{
         this.value = value;
     }
 
+    public void setValue(int value) {
+        this.value = value;
+    }
+
     void paint(Graphics g, Point mousePos){
         if(contains(mousePos)){
             g.setColor(Color.LIGHT_GRAY);

@@ -7,17 +7,19 @@ public class Grid implements Iterable<Cell> {
     Sudoku sudoku;
     Game game;
     int[][] unsolveSudoku;
-    Cell[][] cells = new Cell[9][9];
+    Cell[][] cells;
 
     public Grid() {
         Sudoku sudoku = new Sudoku();
-        Game game = new Game("hard", sudoku);
+        Game game = new Game("hard",6, sudoku);
         sudoku = game.randSudoku(sudoku);
         unsolveSudoku = sudoku.getSudoku();
-        game.printSudoku(sudoku);
-        int[][] unsolveSudoku = sudoku.getSudoku();
-        game.solvedSudoku(sudoku);
-        game.printSudoku(sudoku);
+
+        //sudoku.setSudoku(unsolveSudoku);
+        //game.solvedSudoku(sudoku);
+        //unsolveSudoku = sudoku.getSudoku();
+
+        cells = new Cell[unsolveSudoku.length][unsolveSudoku.length];
         for(int i = 0; i < cells.length; i++){
             for(int j = 0; j < cells[i].length; j++){
                 cells[i][j] = new Cell( i, j, 80*i, 80*j, unsolveSudoku[j][i]);

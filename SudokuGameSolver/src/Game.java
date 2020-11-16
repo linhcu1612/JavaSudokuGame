@@ -2,8 +2,9 @@ import java.util.Random;
 
 public class Game {
 
-    public Game(String difMode,Sudoku sudoku) {
+    public Game(String difMode,int size,Sudoku sudoku) {
         sudoku.ChooseDiff(difMode);
+        sudoku.setSize(size);
     }
 
     public void printSudoku(Sudoku sudoku) {
@@ -55,7 +56,7 @@ public class Game {
 
         for (int i = startColBox;i < startColBox + box; i++) {
             for (int j = startRowBox; j < startRowBox + box; j++) {
-                if (sudoku.getSudoku()[i][j] == num) {
+                if (sudoku.getSudoku()[j][i] == num) {
                     return false;
                 }
             }
@@ -110,12 +111,22 @@ public class Game {
 
         Random rand = new Random();
 
-        for (int i = 0; i < sudoku.getSudoku().length; i++) {
+        for (int i = 0; i < Math.sqrt(sudoku.getSudoku().length); i++) {
             for (int j = 0; j < sudoku.getSudoku().length; j++) {
                 int randomNumber = (int) ((Math.random() * (sudoku.getSize() - 1)) + 1);
                 float random = rand.nextFloat();
                 if (isAvailable(sudoku,i,j,randomNumber) & random > 0.5) {
                     sudoku.getSudoku()[i][j] = randomNumber;
+                }
+            }
+        }
+
+        this.solvedSudoku(sudoku);
+        for (int i = 0; i < sudoku.getSudoku().length; i++) {
+            for (int j = 0; j < sudoku.getSudoku().length; j++) {
+                float random = rand.nextFloat();
+                if (random > sudoku.getMode()) {
+                    sudoku.getSudoku()[i][j] = 0;
                 }
             }
         }
