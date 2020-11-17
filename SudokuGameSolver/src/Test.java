@@ -6,6 +6,5 @@ public class Test {
         newGame.printSudoku(newSudoku);
         newGame.solvedSudoku(newSudoku,10);
         newGame.printSudoku(newSudoku);
-        System.out.println(newGame.solvedSudoku(newSudoku,0));
     }
 }

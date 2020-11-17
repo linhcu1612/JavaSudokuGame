@@ -3,6 +3,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.time.Duration;
 import java.time.Instant;
+import java.util.Scanner;
 
 class Main extends JFrame {
     
@@ -11,7 +12,7 @@ class Main extends JFrame {
         Stage stage;
 
         public NewGame() {
-            setPreferredSize(new Dimension(720, 720));
+            setPreferredSize(new Dimension(725, 725));
             this.addMouseListener(this);
             stage = new Stage();
         }

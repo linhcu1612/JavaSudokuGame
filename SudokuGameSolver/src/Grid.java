@@ -5,16 +5,21 @@ import java.util.function.Consumer;
 public class Grid implements Iterable<Cell> {
 
     private Sudoku sudoku;
+    private Game game;
 
 
     public Grid() {
         sudoku = new Sudoku();
-        Game game = new Game("hard", sudoku);
+        game = new Game("hard", sudoku);
         sudoku = game.randSudoku(sudoku);
     }
 
     public void paint(Graphics g, Point mousePos){
         doToEachCell(   (Cell c) -> c.paint(g, mousePos)  );
+    }
+
+    public void writeNumber(int number, Point mousePos) {
+        doToEachCell(   (Cell c) -> c.writeNumber(number, mousePos)  );
     }
 
     @Override
@@ -27,4 +32,6 @@ public class Grid implements Iterable<Cell> {
             func.accept(c);
         }
     }
+
+    
 }

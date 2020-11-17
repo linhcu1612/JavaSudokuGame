@@ -2,12 +2,16 @@ import java.util.Random;
 
 public class Game {
 
+    Sudoku solvedSudoku;
+
     public Game(String difMode,int size,Sudoku sudoku) {
+        solvedSudoku = new Sudoku();
         sudoku.ChooseDiff(difMode);
         sudoku.setSize(size);
     }
 
     public Game(String difMode,Sudoku sudoku) {
+        solvedSudoku = new Sudoku();
         sudoku.ChooseDiff(difMode);
     }
 
@@ -25,11 +29,11 @@ public class Game {
             }
             for (int j = 0; j < sudoku.getSudoku().length; j++) {
                 if (j == 0) {
-                    System.out.print(" | " + sudoku.getSudoku()[i][j] + " ");
+                    System.out.print(" | " + sudoku.getSudoku()[i][j].getValue() + " ");
                 } else if (((j+1) % Math.sqrt(sudoku.getSudoku().length)) == 0 ) {
-                    System.out.print(sudoku.getSudoku()[i][j] + " | ");
+                    System.out.print(sudoku.getSudoku()[i][j].getValue() + " | ");
                 } else {
-                    System.out.print(sudoku.getSudoku()[i][j] + " ");
+                    System.out.print(sudoku.getSudoku()[i][j].getValue() + " ");
                 }
             }
             System.out.println("");
@@ -116,9 +120,6 @@ public class Game {
     }
 
     public Sudoku randSudoku(Sudoku sudoku){
-        sudoku.setTitle("Generated Random Sudoku Set");
-        sudoku.setStatus("new Sudoku Set");
-
         Random rand = new Random();
 
         for (int i = 0; i < Math.sqrt(sudoku.getSudoku().length); i++) {
@@ -132,6 +133,11 @@ public class Game {
         }
 
         this.solvedSudoku(sudoku,0);
+        solvedSudoku.setSudoku(sudoku.getSudoku());
+
+        sudoku.setTitle("Generated Random Sudoku Set");
+        sudoku.setStatus("new Sudoku Set");
+
         for (int i = 0; i < sudoku.getSudoku().length; i++) {
             for (int j = 0; j < sudoku.getSudoku().length; j++) {
                 float random = rand.nextFloat();
@@ -142,5 +148,9 @@ public class Game {
         }
 
         return sudoku;
+    }
+
+    public Sudoku getSolvedSudoku() {
+        return this.solvedSudoku;
     }
 }

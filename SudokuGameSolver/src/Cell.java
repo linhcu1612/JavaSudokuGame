@@ -2,15 +2,19 @@ import java.awt.*;
 
 public class Cell extends Rectangle{
     
-    private static int size = 80;
+    private static int sizeRect = 80;
     private int col;
     private int row;
     private int value = 0;
 
     public Cell(int col, int row, int x, int y){
-        super(x,y,size,size);
+        super(x,y, sizeRect, sizeRect);
         this.col = col;
         this.row = row;
+    }
+
+    public int getSizeRect() {
+        return this.sizeRect;
     }
 
     public void setValue(int value) {
@@ -21,18 +25,24 @@ public class Cell extends Rectangle{
         return this.value;
     }
 
-    void paint(Graphics g, Point mousePos){
-        if(contains(mousePos)){
+    void paint(Graphics g, Point mousePos) {
+        if (contains(mousePos)) {
             g.setColor(Color.LIGHT_GRAY);
         } else {
             g.setColor(Color.WHITE);
         }
-        g.fillRect(x,y,size,size);
+        g.fillRect(x, y, sizeRect, sizeRect);
         g.setColor(Color.BLACK);
-        g.drawRect(x,y,size,size);
+        g.drawRect(x, y, sizeRect, sizeRect);
         g.setFont(new Font("TimesRoman", Font.PLAIN, 30));
         if (value != 0) {
             g.drawString(String.valueOf(value), x+35, y+50);
+        }
+    }
+
+    public void writeNumber(int number, Point mousePos) {
+        if (contains(mousePos)) {
+            this.value = number;
         }
     }
 
