@@ -7,6 +7,10 @@ public class Game {
         sudoku.setSize(size);
     }
 
+    public Game(String difMode,Sudoku sudoku) {
+        sudoku.ChooseDiff(difMode);
+    }
+
     public void printSudoku(Sudoku sudoku) {
         System.out.println("Title: " + sudoku.getTitle());
         System.out.println("Difficult Mode : " + sudoku.getDiffMode());
@@ -39,13 +43,13 @@ public class Game {
 
     public boolean isAvailable(Sudoku sudoku, int row, int col, int num) {
         for (int i = 0; i < sudoku.getSudoku().length; i++) {
-            if (sudoku.getSudoku()[row][i] == num) {
+            if (sudoku.getSudoku()[row][i].getValue() == num) {
                 return false;
             }
         }
 
         for (int k = 0; k < sudoku.getSudoku().length; k++) {
-            if (sudoku.getSudoku()[k][col] == num) {
+            if (sudoku.getSudoku()[k][col].getValue() == num) {
                 return false;
             }
         }
@@ -56,7 +60,7 @@ public class Game {
 
         for (int i = startColBox;i < startColBox + box; i++) {
             for (int j = startRowBox; j < startRowBox + box; j++) {
-                if (sudoku.getSudoku()[j][i] == num) {
+                if (sudoku.getSudoku()[j][i].getValue() == num) {
                     return false;
                 }
             }
@@ -65,7 +69,7 @@ public class Game {
         return true;
     }
 
-    public boolean solvedSudoku(Sudoku sudoku) {
+    public boolean solvedSudoku(Sudoku sudoku, int sleepTime) {
         sudoku.setTitle("Solved Sudoku Set");
         int row = -1;
         int col = -1;
@@ -73,7 +77,7 @@ public class Game {
 
         for (int i = 0; i < sudoku.getSudoku().length; i++) {
             for (int j = 0; j < sudoku.getSudoku().length; j++) {
-                if (sudoku.getSudoku()[i][j] == 0) {
+                if (sudoku.getSudoku()[i][j].getValue() == 0) {
                     row = i;
                     col = j;
                     isEmpty = false;
@@ -90,14 +94,20 @@ public class Game {
         }
 
         for (int num = 1; num <= sudoku.getSudoku().length; num++) {
-            if (isAvailable(sudoku,row,col,num)){
-                sudoku.getSudoku()[row][col] = num;
-                if (solvedSudoku(sudoku)) {
-                    sudoku.setStatus("solved");
-                    return true;
-                } else {
-                    sudoku.getSudoku()[row][col] = 0;
+            try {
+                Thread.sleep(sleepTime);
+                if (isAvailable(sudoku,row,col,num)){
+                    sudoku.getSudoku()[row][col].setValue(num);
+                    if (solvedSudoku(sudoku,sleepTime)) {
+                        sudoku.setStatus("solved");
+                        return true;
+                    } else {
+                        sudoku.getSudoku()[row][col].setValue(0);
+                    }
                 }
+            }
+            catch (Exception ex) {
+                System.out.println("thread got interrupted");
             }
         }
         
@@ -116,17 +126,17 @@ public class Game {
                 int randomNumber = (int) ((Math.random() * (sudoku.getSize() - 1)) + 1);
                 float random = rand.nextFloat();
                 if (isAvailable(sudoku,i,j,randomNumber) & random > 0.5) {
-                    sudoku.getSudoku()[i][j] = randomNumber;
+                    sudoku.getSudoku()[i][j].setValue(randomNumber);
                 }
             }
         }
 
-        this.solvedSudoku(sudoku);
+        this.solvedSudoku(sudoku,0);
         for (int i = 0; i < sudoku.getSudoku().length; i++) {
             for (int j = 0; j < sudoku.getSudoku().length; j++) {
                 float random = rand.nextFloat();
                 if (random > sudoku.getMode()) {
-                    sudoku.getSudoku()[i][j] = 0;
+                    sudoku.getSudoku()[i][j].setValue(0);
                 }
             }
         }

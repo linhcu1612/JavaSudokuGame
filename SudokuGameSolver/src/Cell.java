@@ -2,20 +2,23 @@ import java.awt.*;
 
 public class Cell extends Rectangle{
     
-    static int size = 80;
-    int col;
-    int row;
-    int value;
+    private static int size = 80;
+    private int col;
+    private int row;
+    private int value = 0;
 
-    public Cell(int col, int row, int x, int y, int value) {
+    public Cell(int col, int row, int x, int y){
         super(x,y,size,size);
         this.col = col;
         this.row = row;
-        this.value = value;
     }
 
     public void setValue(int value) {
         this.value = value;
+    }
+
+    public int getValue() {
+        return this.value;
     }
 
     void paint(Graphics g, Point mousePos){

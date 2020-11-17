@@ -7,15 +7,25 @@ public class Sudoku {
     private float mode;
     private String title = "Default Mode";
     private String status = "Unsolve";
-    private int[][] sudoku;
+    private Cell[][] sudoku;
 
     public Sudoku() {
-        this.sudoku = new int[size][size];
+        this.sudoku = new Cell[size][size];
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                sudoku[i][j] = new Cell(i, j, 80*i, 80*j);
+            }
+        }
     }
 
     public void setSize(int size) {
         this.size = size;
-        this.sudoku = new int[size][size];
+        this.sudoku = new Cell[size][size]; 
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                sudoku[i][j] = new Cell(i, j, 80*i, 80*j);
+            }
+        }
     }
 
     public int getSize() {
@@ -46,11 +56,11 @@ public class Sudoku {
         return this.status;
     }
     
-    public int[][] getSudoku() {
+    public Cell[][] getSudoku() {
         return this.sudoku;
     }
 
-    public void setSudoku(int[][] sudoku) {
+    public void setSudoku(Cell[][] sudoku) {
         this.sudoku = sudoku;
     }
 
