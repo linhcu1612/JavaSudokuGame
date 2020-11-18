@@ -3,11 +3,10 @@ import java.awt.*;
 import java.awt.event.*;
 import java.time.Duration;
 import java.time.Instant;
-import java.util.Scanner;
 
 class Main extends JFrame {
     
-    class NewGame extends JPanel implements MouseListener {
+    class NewGame extends JPanel implements MouseListener,KeyListener {
 
         Stage stage;
 
@@ -19,11 +18,12 @@ class Main extends JFrame {
 
         @Override
         public void paint(Graphics g) {
-            stage.paint(g, getMousePosition());
+            stage.paint(g,getMousePosition());
         }
 
         @Override
         public void mouseClicked(MouseEvent e) {
+            stage.mouseClicked(e.getPoint());
         }
 
         @Override
@@ -41,6 +41,22 @@ class Main extends JFrame {
         @Override
         public void mouseExited(MouseEvent e) {
         }
+
+        @Override
+        public void keyTyped(KeyEvent e) {
+            // TODO Auto-generated method stub
+
+        }
+
+        @Override
+        public void keyPressed(KeyEvent e) {
+        }
+
+        @Override
+        public void keyReleased(KeyEvent e) {
+            // TODO Auto-generated method stub
+
+        }
 }
 
     public static void main(String[] args) throws Exception {
@@ -50,6 +66,7 @@ class Main extends JFrame {
 
     private Main() {
         super("SuDoKu Game");
+        addKeyListener(new NumberPress());
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         NewGame newGame = new NewGame();
         newGame.setLayout(null);
