@@ -8,6 +8,7 @@ public class ChoosingCell implements GameState {
             if (c.contains(x, y) && c.getValue() == 0) {
                 s.choosingCell = c;
                 s.pendingCell.add(c);
+                System.out.println("choosing number state");
                 s.currentState = new ChoosingNumber();
             }
         }
@@ -19,8 +20,6 @@ public class ChoosingCell implements GameState {
 
     @Override
     public void keyPressed(int x, Stage s) {
-        // TODO Auto-generated method stub
-
     }
     
 }

@@ -6,7 +6,8 @@ public class Cell extends Rectangle{
     private int col;
     private int row;
     private int value = 0;
-    private Color colour = Color.WHITE;
+    private boolean pending = false;
+    private Color colour = new Color(255, 255, 224);
 
     public Cell(){
         super(0,0,0,0);
@@ -36,11 +37,17 @@ public class Cell extends Rectangle{
         return this.value;
     }
 
+    public void pending() {
+        this.pending = true;
+    }
+
     void paint(Graphics g, Point mouseLoc) {
         if(contains(mouseLoc)) {
             g.setColor(Color.LIGHT_GRAY);
-        } else {
+        } else if (value == 0 || pending) {
             g.setColor(this.colour);
+        } else {
+            g.setColor(Color.WHITE);
         }
         g.fillRect(x, y, sizeRect, sizeRect);
         g.setColor(Color.BLACK);

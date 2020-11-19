@@ -1,7 +1,7 @@
 import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.Color;
-import java.awt.event.*;
+//import java.awt.event.*;
 import java.util.*;
 
 public class Stage {
@@ -21,7 +21,11 @@ public class Stage {
 
     public void paint(Graphics g, Point mouseLoc) {
         grid.paint(g,mouseLoc);
-        grid.paintOverlay(g, choosingCell, new Color(144,238,144));
+        grid.paintOverlay(g, choosingCell, new Color(247, 247, 129));
+        
+        for (Cell c : pendingCell) {
+            c.pending();
+        }
     }
     
     public void mouseClicked(int X,int Y) {

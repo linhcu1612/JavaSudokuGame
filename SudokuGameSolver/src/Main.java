@@ -5,7 +5,7 @@ import java.time.Duration;
 import java.time.Instant;
 
 class Main extends JFrame {
-    
+
     class NewGame extends JPanel implements MouseListener,KeyListener {
 
         Stage stage;
@@ -14,6 +14,7 @@ class Main extends JFrame {
             setPreferredSize(new Dimension(725, 725));
             this.addMouseListener(this);
             this.addKeyListener(this);
+            this.setFocusable(true);
             stage = new Stage();
         }
 
@@ -45,8 +46,7 @@ class Main extends JFrame {
 
         @Override
         public void keyTyped(KeyEvent e) {
-            System.out.println(e.getKeyCode());
-            stage.keyPressed(e.getKeyCode());
+            stage.keyPressed(e.getKeyChar());
         }
 
         @Override
