@@ -20,8 +20,9 @@ public class Grid implements Iterable<Cell> {
         doToEachCell(   (Cell c) -> c.paint(g,mouseLoc));
     }
 
-    public void paintOverlay(Cell c,Color color){
-        c.setColor(color);
+    public void paintOverlay(Graphics g,Cell c,Color color){
+        g.setColor(color);
+        g.fillRect(c.x, c.y, c.width, c.height);
     }
 
     @Override
@@ -45,5 +46,8 @@ public class Grid implements Iterable<Cell> {
         }
     }
 
+    public Cell[][] getCell() {
+        return sudoku.getSudoku();
+    }
     
 }

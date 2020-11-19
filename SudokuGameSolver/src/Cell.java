@@ -8,6 +8,12 @@ public class Cell extends Rectangle{
     private int value = 0;
     private Color colour = Color.WHITE;
 
+    public Cell(){
+        super(0,0,0,0);
+        this.col = 0;
+        this.row = 0;
+    }
+
     public Cell(int col, int row, int x, int y){
         super(x,y, sizeRect, sizeRect);
         this.col = col;
@@ -32,7 +38,7 @@ public class Cell extends Rectangle{
 
     void paint(Graphics g, Point mouseLoc) {
         if(contains(mouseLoc)) {
-            g.setColor(Color.GRAY);
+            g.setColor(Color.LIGHT_GRAY);
         } else {
             g.setColor(this.colour);
         }

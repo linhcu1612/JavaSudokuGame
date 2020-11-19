@@ -13,6 +13,7 @@ class Main extends JFrame {
         public NewGame() {
             setPreferredSize(new Dimension(725, 725));
             this.addMouseListener(this);
+            this.addKeyListener(this);
             stage = new Stage();
         }
 
@@ -23,7 +24,7 @@ class Main extends JFrame {
 
         @Override
         public void mouseClicked(MouseEvent e) {
-            stage.mouseClicked(e.getPoint());
+            stage.mouseClicked(e.getX(),e.getY());
         }
 
         @Override
@@ -44,8 +45,8 @@ class Main extends JFrame {
 
         @Override
         public void keyTyped(KeyEvent e) {
-            // TODO Auto-generated method stub
-
+            System.out.println(e.getKeyCode());
+            stage.keyPressed(e.getKeyCode());
         }
 
         @Override
@@ -54,8 +55,6 @@ class Main extends JFrame {
 
         @Override
         public void keyReleased(KeyEvent e) {
-            // TODO Auto-generated method stub
-
         }
 }
 
@@ -66,7 +65,6 @@ class Main extends JFrame {
 
     private Main() {
         super("SuDoKu Game");
-        addKeyListener(new NumberPress());
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         NewGame newGame = new NewGame();
         newGame.setLayout(null);
