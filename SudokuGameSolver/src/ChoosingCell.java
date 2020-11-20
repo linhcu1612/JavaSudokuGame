@@ -5,10 +5,9 @@ public class ChoosingCell implements GameState {
     @Override
     public void MouseClick(int x, int y, Stage s) {
         for (Cell c : s.grid) {
-            if (c.contains(x, y) && c.getValue() == 0) {
+            if (c.contains(x, y) && (c.getValue() == 0 || c.getState())) {
                 s.choosingCell = c;
                 s.pendingCell.add(c);
-                System.out.println("choosing number state");
                 s.currentState = new ChoosingNumber();
             }
         }

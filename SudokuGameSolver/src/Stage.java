@@ -21,10 +21,10 @@ public class Stage {
 
     public void paint(Graphics g, Point mouseLoc) {
         grid.paint(g,mouseLoc);
-        grid.paintOverlay(g, choosingCell, new Color(247, 247, 129));
+        grid.paintOverlay(g, choosingCell, Color.LIGHT_GRAY);
         
         for (Cell c : pendingCell) {
-            c.pending();
+            c.setPending(true);
         }
     }
     

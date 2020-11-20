@@ -3,6 +3,7 @@ import java.awt.Point;
 import java.awt.Color;
 import java.util.Optional;
 import java.util.function.Consumer;
+import java.awt.*;
 
 public class Grid implements Iterable<Cell> {
 
@@ -22,7 +23,12 @@ public class Grid implements Iterable<Cell> {
 
     public void paintOverlay(Graphics g,Cell c,Color color){
         g.setColor(color);
-        g.fillRect(c.x, c.y, c.width, c.height);
+        g.fillRect(c.x+2, c.y+2, c.width-4, c.height-4);
+        g.setColor(Color.BLACK);
+        g.setFont(new Font("TimesRoman", Font.PLAIN, 30));
+        if (c.getValue() != 0) {
+            g.drawString(String.valueOf(c.getValue()), c.x+35, c.y+50);
+        }
     }
 
     @Override
@@ -46,8 +52,20 @@ public class Grid implements Iterable<Cell> {
         }
     }
 
+    public Game getGame() {
+        return this.game;
+    }
+
+    public Sudoku getSudoku() {
+        return this.sudoku;
+    }
+
     public Cell[][] getCell() {
         return sudoku.getSudoku();
+    }
+
+    public Cell[][] getSolvedCell() {
+        return game.getSolvedSudoku().getSudoku();
     }
     
 }

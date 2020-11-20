@@ -128,12 +128,12 @@ public class Game {
                 float random = rand.nextFloat();
                 if (isAvailable(sudoku,i,j,randomNumber) & random > 0.5) {
                     sudoku.getSudoku()[i][j].setValue(randomNumber);
+                    solvedSudoku.getSudoku()[i][j].setValue(randomNumber);
                 }
             }
         }
 
-        this.solvedSudoku(sudoku,0);
-        solvedSudoku.setSudoku(sudoku.getSudoku());
+        solvedSudoku(sudoku,0);
 
         sudoku.setTitle("Generated Random Sudoku Set");
         sudoku.setStatus("new Sudoku Set");
@@ -151,6 +151,7 @@ public class Game {
     }
 
     public Sudoku getSolvedSudoku() {
+        solvedSudoku(solvedSudoku, 0);
         return this.solvedSudoku;
     }
 }

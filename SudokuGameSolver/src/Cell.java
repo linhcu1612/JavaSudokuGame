@@ -21,6 +21,14 @@ public class Cell extends Rectangle{
         this.row = row;
     }
 
+    public int getCol() {
+        return this.col;
+    }
+
+    public int getRow() {
+        return this.row;
+    }
+
     public void setColor(Color color) {
         this.colour = color;
     }
@@ -37,8 +45,12 @@ public class Cell extends Rectangle{
         return this.value;
     }
 
-    public void pending() {
-        this.pending = true;
+    public boolean getState() {
+        return this.pending;
+    }
+
+    public void setPending(boolean state) {
+        this.pending = state;
     }
 
     void paint(Graphics g, Point mouseLoc) {

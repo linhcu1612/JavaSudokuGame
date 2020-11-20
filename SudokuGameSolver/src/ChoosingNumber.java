@@ -44,11 +44,15 @@ public class ChoosingNumber implements GameState {
         if (x == KeyEvent.VK_9) {
             s.choosingCell.setValue(9);
         }
-        if (x == KeyEvent.VK_SPACE) {
-            //s.choosingCell.setValue(newValue);
-            //System.out.println(s.choosingCell.getValue());
+        if (x == KeyEvent.VK_ENTER) {
+            s.currentState = new CheckCorrect(s);
         } 
-        if (x == KeyEvent.VK_ESCAPE) {
+        if (x == KeyEvent.VK_SPACE) {
+            for (Cell c : s.pendingCell) {
+                c.setValue(0);
+                c.setPending(false);
+            }
+            s.currentState = new SolveVisualize(s);
         }
 
     }
