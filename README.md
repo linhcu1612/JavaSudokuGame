@@ -7,7 +7,7 @@ this is my first sudoku game app using java, in this project i got an opportunit
 - find Main.java
 - run Main.java 
 
-<img src="Image/GUI.png"
+<img src="SudokuGameSolver/src/Image/GUI.png"
      alt="MainGUI"
      style="float: left; margin-right: 10px;"
      width="400"
@@ -18,7 +18,7 @@ this is my first sudoku game app using java, in this project i got an opportunit
 2.1 Selecting a location 
 - click your mouse to a location 
 
-<img src="Image/ClickAtAPlace.png"
+<img src="SudokuGameSolver/src/Image/ClickAtAPlace.png"
      alt="Click at a place"
      style="float: left; margin-right: 10px;"
      width="400"
@@ -27,7 +27,7 @@ this is my first sudoku game app using java, in this project i got an opportunit
 2.2 Input number into the location
 - use your keybroad to input a number from 0 to 9 ( Default Mode is 9x9 ) 
 
-<img src="Image/TakeInputFromKeybroad.png"
+<img src="SudokuGameSolver/src/Image/TakeInputFromKeybroad.png"
      alt="Input from keybroad to the selected location"
      style="float: left; margin-right: 10px;"
      width="400"
@@ -37,7 +37,7 @@ this is my first sudoku game app using java, in this project i got an opportunit
 - choose the location you want to check if it match with the solution ( That location is different than 0 )
 - press enter to check ( If that location turn red then it is wrong and green if it is correct )
 
-<img src="Image/CheckIfTheInputIsCorrect.png"
+<img src="SudokuGameSolver/src/Image/CheckIfTheInputIsCorrect.png"
      alt="Check if the input is correct"
      style="float: left; margin-right: 10px;"
      width="400"
@@ -47,7 +47,7 @@ this is my first sudoku game app using java, in this project i got an opportunit
 - click on any location ( its location background should be in light yellow )
 - Press space 
 
-<img src="Image/ShowSolution.png"
+<img src="SudokuGameSolver/src/Image/ShowSolution.png"
      alt="Click at a place"
      style="float: left; margin-right: 10px;"
      width="400"
