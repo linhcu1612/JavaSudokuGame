@@ -21,7 +21,6 @@ public class Sudoku {
                     sudoku[i][j] = new Cell(i, j, 80*j+5, 80*i);
                 } else {
                     sudoku[i][j] = new Cell(i, j, 80*j, 80*i);
-            
                 }
             }
         }
@@ -32,7 +31,15 @@ public class Sudoku {
         this.sudoku = new Cell[size][size]; 
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
-                sudoku[i][j] = new Cell(i, j, 80*j, 80*i);
+                if ((i % Math.sqrt(size) == 0) && (j % Math.sqrt(size) == 0)) {
+                    sudoku[i][j] = new Cell(i, j, 80*j+5, 80*i+5);
+                } else if ((i % Math.sqrt(size) == 0)) {
+                    sudoku[i][j] = new Cell(i, j, 80*j, 80*i+5);
+                } else if ((j % Math.sqrt(size) == 0)) {
+                    sudoku[i][j] = new Cell(i, j, 80*j+5, 80*i);
+                } else {
+                    sudoku[i][j] = new Cell(i, j, 80*j, 80*i);
+                }
             }
         }
     }
