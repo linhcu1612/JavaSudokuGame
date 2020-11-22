@@ -1,3 +1,4 @@
+import java.awt.Color;
 import java.awt.Graphics;
 
 public class SolveVisualize implements GameState {
@@ -7,6 +8,9 @@ public class SolveVisualize implements GameState {
     public SolveVisualize(Stage s) {
         this.s = s;
         SolveVisualizeMethod(s,0);
+        for (Cell c : s.grid) {
+            c.setColor(Color.WHITE);
+        }
     }
 
     public boolean SolveVisualizeMethod(Stage s, int delayTime) {

@@ -22,12 +22,14 @@ public class Grid implements Iterable<Cell> {
     }
 
     public void paintOverlay(Graphics g,Cell c,Color color){
-        g.setColor(color);
-        g.fillRect(c.x+2, c.y+2, c.width-4, c.height-4);
-        g.setColor(Color.BLACK);
-        g.setFont(new Font("TimesRoman", Font.PLAIN, 30));
-        if (c.getValue() != 0) {
-            g.drawString(String.valueOf(c.getValue()), c.x+35, c.y+50);
+        if (c != null) {
+            g.setColor(color);
+            g.fillRect(c.x+2, c.y+2, c.width-4, c.height-4);
+            g.setColor(Color.BLACK);
+            g.setFont(new Font("TimesRoman", Font.PLAIN, 30));
+            if (c.getValue() != 0) {
+                g.drawString(String.valueOf(c.getValue()), c.x+35, c.y+50);
+            }
         }
     }
 

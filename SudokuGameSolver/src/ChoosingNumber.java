@@ -52,6 +52,7 @@ public class ChoosingNumber implements GameState {
                 c.setValue(0);
                 c.setPending(false);
             }
+            s.choosingCell = null;
             s.currentState = new SolveVisualize(s);
         }
 
