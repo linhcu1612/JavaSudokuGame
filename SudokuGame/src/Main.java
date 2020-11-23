@@ -56,7 +56,7 @@ class Main extends JFrame {
         @Override
         public void keyReleased(KeyEvent e) {
         }
-}
+    }
 
     public static void main(String[] args) throws Exception {
         Main window = new Main();

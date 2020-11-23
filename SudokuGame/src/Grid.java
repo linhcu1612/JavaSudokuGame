@@ -13,7 +13,7 @@ public class Grid implements Iterable<Cell> {
 
     public Grid() {
         sudoku = new Sudoku();
-        game = new Game("hard", sudoku);
+        game = new Game("medium", sudoku);
         sudoku = game.randSudoku(sudoku);
     }
 
